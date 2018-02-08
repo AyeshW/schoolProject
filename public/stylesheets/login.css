@@ -40,7 +40,7 @@ input, button {
 .cont {
     position: relative;
     height: 100%;
-    background-image: url("/images/Awesome-Brooklyn-Bridge-Wallpaper.jpg");
+    background-image: url("https://static.pexels.com/photos/547114/pexels-photo-547114.jpeg");
     background-size: cover;
     overflow: auto;
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
