@@ -40,10 +40,33 @@ input, button {
 .cont {
     position: relative;
     height: 100%;
-    background-image: url("https://static.pexels.com/photos/547114/pexels-photo-547114.jpeg");
+    background-image: url("https://ak4.picdn.net/shutterstock/videos/5117114/thumb/1.jpg?i10c=img.resize(height:160)");
     background-size: cover;
     overflow: auto;
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+.back_gradient{
+    position: relative;
+    height: 100%;
+    background-size: cover;
+    overflow: auto;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0.3+100;Neutral+Density */
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.3) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.3) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#4d000000',GradientType=0 ); /* IE6-9 */
+    
+
+    -webkit-transition: opacity 0.1s, -webkit-transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25);
+    transition: opacity 0.1s, -webkit-transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25);
+    transition: opacity 0.1s, transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25);
+    transition: opacity 0.1s, transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25), -webkit-transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25);
+    -webkit-transform: scale(1);
+    transform: scale(1);
 }
 
 .demo {
@@ -60,14 +83,6 @@ input, button {
 .login {
     position: relative;
     height: 100%;
-    background: -webkit-gradient(linear, left top, left bottom, from(rgba(146, 135, 187, 0.8)), to(rgba(0, 0, 0, 0.6)));
-    background: linear-gradient(to bottom, rgba(146, 135, 187, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
-    -webkit-transition: opacity 0.1s, -webkit-transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25);
-    transition: opacity 0.1s, -webkit-transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25);
-    transition: opacity 0.1s, transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25);
-    transition: opacity 0.1s, transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25), -webkit-transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25);
-    -webkit-transform: scale(1);
-    transform: scale(1);
 }
 .login.inactive {
     opacity: 0;
@@ -76,15 +91,12 @@ input, button {
 }
 .login__check {
     position: absolute;
-    top: 16rem;
-    left: 13.5rem;
-    width: 14rem;
-    height: 2.8rem;
-    background: #fff;
-    -webkit-transform-origin: 0 100%;
-    transform-origin: 0 100%;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
+    top: 10rem;
+    left: 10rem;
+    background-image: url("../images/user.png");
+    background-size: 100%;
+    width: 10rem;
+    height: 10rem;
 }
 .login__check:before {
     content: "";
@@ -93,9 +105,6 @@ input, button {
     bottom: 100%;
     width: 2.8rem;
     height: 5.2rem;
-    background: #fff;
-    -webkit-box-shadow: inset -0.2rem -2rem 2rem rgba(0, 0, 0, 0.2);
-    box-shadow: inset -0.2rem -2rem 2rem rgba(0, 0, 0, 0.2);
 }
 .login__form {
     position: absolute;
@@ -134,7 +143,7 @@ input, button {
     padding-left: 1.5rem;
     font-size: 1.5rem;
     background: transparent;
-    color: #FDFCFD;
+    color: #ffff;
 }
 .login__submit {
     position: relative;

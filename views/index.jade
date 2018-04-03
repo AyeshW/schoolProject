@@ -4,17 +4,9 @@
 doctype html
 html(lang='en')
     head
-        //
-          ===============================================
-          Template Design By WpFreeware Team.
-          Author URI : http://www.wpfreeware.com/
-          ====================================================
-        //
-          Basic Page Needs
-          ==================================================
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
-        title WpF Degree : Home
+        title UOM College : Home
         //
           Mobile Specific Metas
           ==================================================
@@ -57,54 +49,7 @@ html(lang='en')
         a.scrollToTop(href='#')
         // END SCROLL TOP BUTTON
         // =========== BEGIN HEADER SECTION ================
-        header#header
-            // BEGIN MENU
-            .menu_area
-                nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
-                    .container
-                        .navbar-header
-                            // FOR MOBILE VIEW COLLAPSED BUTTON
-                            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
-                                span.sr-only Toggle navigation
-                                span.icon-bar
-                                span.icon-bar
-                                span.icon-bar
-                            // LOGO
-                            // TEXT BASED LOGO
-                            a.navbar-brand(href='index.html')
-                                | WpF 
-                                span Degree
-                            // IMG BASED LOGO
-                            // <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
-                        #navbar.navbar-collapse.collapse
-                            ul#top-menu.nav.navbar-nav.navbar-right.main-nav
-                                li.active
-                                    a(href='index.html') Home
-                                li
-                                    a(href='course-archive.html') Course
-                                li
-                                    a(href='scholarship.html') Scholarship
-                                li
-                                    a(href='events-archive.html') Events
-                                li
-                                    a(href='gallery.html') Gallery
-                                li
-                                    a(href='blog-archive.html') Blog
-                                li.dropdown
-                                    a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
-                                        | Page
-                                        span.caret
-                                    ul.dropdown-menu(role='menu')
-                                        li
-                                            a(href='404.html') 404 Page
-                                        li
-                                            a(href='#') Link Two
-                                        li
-                                            a(href='#') Link Three
-                                li
-                                    a(href='contact.html') Contact
-                        // /.nav-collapse
-            // END MENU
+        include common_header
         // =========== END HEADER SECTION ================
         // =========== BEGIN SLIDER SECTION ================
         section#slider
@@ -117,7 +62,7 @@ html(lang='en')
                                 li
                                     img(src='images/slider/2.jpg', alt='img')
                                     .slider_caption
-                                        h2 Largest & Beautiful University
+                                        h2 Calm & beautiful environment
                                         p
                                             | It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
                                         a.slider_btn(href='#') Know More
