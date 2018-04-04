@@ -7,34 +7,19 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
-var path = require('path');
-var bodyParser = require('body-parser');
-var app = express();
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.post('/form',function (req,res){
-    //employee details from add-employee.html page
-    var name=req.body;
-    console.log(name);
-    res.status(200).send('employee ' + name + ' added');
-});
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('login', { title: 'login' });
+    document.getElementById("response_to_action").style.visibility = "hidden";
 });
 
-login("student1");
-var app = express();
-
-router.post("/login", function(req, res){
+router.post("/", function(req, res){
     console.log(req.body.username);
-    res.render('/',{title:'Home'});
+    login(req.body.username,req.body.password,res);
 });
 
-function login(username) {
+function login(username,givenPassword,response) {
     var con = mysql.createConnection({
         host: "sql12.freemysqlhosting.net",
         user: "sql12230102",
@@ -47,8 +32,26 @@ function login(username) {
         con.query("SELECT password FROM userlogin WHERE username = '"+username+"'", function (err, result, fields) {
             if (err) throw err;
             console.log(result);
+            var string=JSON.stringify(result);
+            if (string == "[]"){
+                console.log("There is no such an account!")
+            }else {
+                console.log('>> string: ', string);
+                var json = JSON.parse(string);
+                console.log('>> json: ', json);
+                console.log('>> user.name: ', json[0].password);
+                var realPassword = json[0].password;
+                if (realPassword == givenPassword) {
+                    console.log("DONE!");
+                    return response.redirect('/dashboard');
+                } if (realPassword != givenPassword) {
+                    console.log("Wrong password!")
+                }
+            }
         });
     });
 }
+
+
 
 module.exports = router;
