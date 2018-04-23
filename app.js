@@ -46,6 +46,7 @@ app.use('/science',science);
 app.use('/buddhism',buddhism);
 
 
+// catch 404 and forward to error handler
 app.use(function(req,res){
     res.render('404.jade');
 });
