@@ -23,7 +23,7 @@ html
         //
           AdminLTE Skins. Choose a skin from the css/skins
           folder instead of downloading all of them to reduce the load.
-        link(rel='stylesheet', href='stylesheets/dist/css/skins/_all-skins.min.css')
+        link(rel='stylesheet', href='/stylesheets/dist/css/skins/_all-skins.min.css')
         // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
         // WARNING: Respond.js doesn't work if you view the page via file://
         //
@@ -343,22 +343,34 @@ html
             // Content Wrapper. Contains page content
             .content-wrapper(style='min-height: 902.6px;')
                 // form start
-                form(role='form')
+                form(action='/create_user',method='post')
                     .box-body
                         .form-group
-                            label(for='exampleInputEmail1') Email address
-                            input#exampleInputEmail1.form-control(type='email', placeholder='Enter email')
+                            label Full name
+                            input.form-control(type='text',name='fullname', placeholder='Enter full name')
                         .form-group
-                            label(for='exampleInputPassword1') Password
-                            input#exampleInputPassword1.form-control(type='password', placeholder='Password')
+                            label(for='nameWithinitials') Name with initials
+                            input#nameWithinitials.form-control(type='text', name='nameWithinitials',placeholder='Enter name with initials')
                         .form-group
-                            label(for='exampleInputFile') File input
-                            input#exampleInputFile(type='file')
-                            p.help-block Example block-level help text here.
-                        .checkbox
-                            label
-                                input(type='checkbox')
-                                |  Check me out
+                            label(for='indexNum') Index Nunmber
+                            input#indexNum.form-control(type='text',name='indexNum', placeholder='Enter index number')
+                        .form-group
+                            label(for='address1') Address
+                            input#address1.form-control(type='text',name='address1', placeholder='Enter address')
+                        .form-group
+                            label(for='InputEmail1') Email address
+                            input#InputEmail1.form-control(type='email',name='InputEmail1', placeholder='Enter email')
+                        .form-group
+                            label(for='InputPassword1') Password
+                            input#InputPassword1.form-control(type='password',name='InputPassword1', placeholder='Password')
+                        .form-group
+                            label(for='InputPassword2') Password
+                            input#InputPassword2.form-control(type='password',name='InputPassword2', placeholder='Retype Password')
+                        .form-group
+                            label(for='InputFile') Upload a photo
+                            input#InputFile(type='file')
+                            p.help-block Upload a profile picture here
+                        button.login__submit Submit
                     // /.box-body
             footer.main-footer
                 .pull-right.hidden-xs
@@ -366,7 +378,7 @@ html
                     |  2.4.0
                 strong
                     | Copyright © 2014-2016
-                    a(href='https://adminlte.io') Almsaeed Studio
+                    a eSolutions
                     | .
                 |  All rights
                 |             reserved.
