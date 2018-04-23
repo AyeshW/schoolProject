@@ -15,10 +15,10 @@ router.get('/', function(req, res) {
 
 router.post("/", function(req, res){
     console.log(req.body.fullname);
-    insertStudent(req.body.fullname,req.body.indexNum,req.body.indexNum,req.body.address1,req.body.InputEmail1,req.body.InputPassword1);
+    insertStudent(req.body.fullname,req.body.nameWithinitials,req.body.indexNum,req.body.address1,req.body.InputEmail1,req.body.InputPassword1,res,req);
 });
 
-function insertStudent(fullname,nameWithinitials,indexNum,address,InputEmail1,InputPassword1) {
+function insertStudent(fullname,nameWithinitials,indexNum,address,InputEmail1,InputPassword1,response,request) {
     var con = mysql.createConnection({
         host: "sql12.freemysqlhosting.net",
         user: "sql12234088",
@@ -33,6 +33,7 @@ function insertStudent(fullname,nameWithinitials,indexNum,address,InputEmail1,In
         con.query(sql, function (err, result) {
             if (err) throw err;
             console.log("1 record inserted");
+            return response.redirect('/admin_dashboard?admin_name=' + fullname);
         });
     });
 }
