@@ -33,7 +33,7 @@ function insertStudent(fullname,nameWithinitials,indexNum,address,InputEmail1,In
         con.query(sql, function (err, result) {
             if (err) throw err;
             console.log("1 record inserted");
-            return response.redirect('/admin_dashboard?admin_name=' + fullname);
+            return response.redirect('/successfully_created');
         });
     });
 }
