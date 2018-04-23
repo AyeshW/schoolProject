@@ -18,7 +18,7 @@ html(lang='en')
                         .login__check
                         .login__form
                             form(action='/login',method='post')
-                                .login__row
+                                .login__rowa
                                     svg.login__icon.name.svg-icon(viewbox='0 0 20 20')
                                         path(d='M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8')
                                     input.login__input.username(type='text',name='username', placeholder='Username')
@@ -34,7 +34,7 @@ html(lang='en')
                                 button.login__submit Sign in
                                 p.login__signup
                                     | Don't have an account?
-                                    a Sign up
+                                    a(href='../signup') Sign up
         script(type='text/javascript').
             function showDetails(username) {
                 //window.location = '/dashboard?username=' + username;

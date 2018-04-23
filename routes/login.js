@@ -7,29 +7,34 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+var fs = require('fs');
+var http = require('http');
+var url = require('url');
+
+global.responseText = " dsf";
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    console.log(responseText);
     res.render('login', { title: 'login' });
-    document.getElementById("response_to_action").style.visibility = "hidden";
 });
 
 router.post("/", function(req, res){
     console.log(req.body.username);
-    login(req.body.username,req.body.password,res);
+    login(req.body.username,req.body.password,res,req);
 });
 
-function login(username,givenPassword,response) {
+function login(username,givenPassword,response,req) {
     var con = mysql.createConnection({
         host: "sql12.freemysqlhosting.net",
-        user: "sql12230102",
-        password: "RFdkSKjyl7",
-        database: "sql12230102"
+        user: "sql12234088",
+        password: "mYvBvIiYjX",
+        database: "sql12234088"
     });
 
     con.connect(function(err) {
         if (err) throw err;
-        con.query("SELECT password FROM userlogin WHERE username = '"+username+"'", function (err, result, fields) {
+        con.query("SELECT * FROM userlogin WHERE username = '"+username+"'", function (err, result, fields) {
             if (err) throw err;
             console.log(result);
             var string=JSON.stringify(result);
@@ -41,17 +46,24 @@ function login(username,givenPassword,response) {
                 console.log('>> json: ', json);
                 console.log('>> user.name: ', json[0].password);
                 var realPassword = json[0].password;
+                var category = json[0].category;
                 if (realPassword == givenPassword) {
                     console.log("DONE!");
-                    return response.redirect('/dashboard');
+                    if (category == "admin"){
+                        return response.redirect('/admin_dashboard?admin_name=' + username);
+                    }else {
+                        return response.redirect('/dashboard?student_name=' + username);
+                    }
                 } if (realPassword != givenPassword) {
-                    console.log("Wrong password!")
+                    console.log("Wrong password!");
+                    console.log(testVary);
+                    responseText = "Wrong password!";
+                    response.redirect('/login');
                 }
             }
         });
     });
 }
-
 
 
 module.exports = router;
