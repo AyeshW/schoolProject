@@ -13,8 +13,6 @@ var mail_box = require('./routes/mailbox');
 var signup = require('./routes/signup');
 var admin_dashboard = require('./routes/admin_dashboard');
 var create_user = require('./routes/create_user');
-var buddhism=require('./routes/buddhism');
-
 
 var app = express();
 
@@ -39,7 +37,6 @@ app.use('/mailbox',mail_box);
 app.use('/signup',signup);
 app.use('/admin_dashboard',admin_dashboard);
 app.use('/create_user',create_user);
-app.use('/buddhism',buddhism);
 
 
 // catch 404 and forward to error handler
