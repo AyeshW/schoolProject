@@ -15,6 +15,7 @@ var admin_dashboard = require('./routes/admin_dashboard');
 var create_user = require('./routes/create_user');
 var successfully_created = require('./routes/successfully_created');
 var science = require('./routes/science');
+var buddhism = require('./route/buddhism');
 
 
 var app = express();
@@ -42,6 +43,7 @@ app.use('/admin_dashboard',admin_dashboard);
 app.use('/create_user',create_user);
 app.use('/successfully_created',successfully_created);
 app.use('/science',science);
+app.use('/buddhism',buddhism);
 
 
 app.use(function(req,res){
