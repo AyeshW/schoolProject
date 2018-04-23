@@ -9,7 +9,7 @@ global.testVary = "asdfa";
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('buddhism', { title: 'buddhism' });
+    res.render('buddhism', { title: 'buddism' });
 });
 
 module.exports = router;
