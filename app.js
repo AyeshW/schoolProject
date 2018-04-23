@@ -13,6 +13,7 @@ var mail_box = require('./routes/mailbox');
 var signup = require('./routes/signup');
 var admin_dashboard = require('./routes/admin_dashboard');
 var create_user = require('./routes/create_user');
+var successfully_created = require('./routes/successfully_created');
 
 var app = express();
 
@@ -37,32 +38,13 @@ app.use('/mailbox',mail_box);
 app.use('/signup',signup);
 app.use('/admin_dashboard',admin_dashboard);
 app.use('/create_user',create_user);
+app.use('/successfully_created',successfully_created);
 
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use(function(req,res){
+    res.render('404.jade');
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
 
 
 module.exports = app;
