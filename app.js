@@ -14,6 +14,7 @@ var signup = require('./routes/signup');
 var admin_dashboard = require('./routes/admin_dashboard');
 var create_user = require('./routes/create_user');
 var science = require('./routes/science');
+var history = require('./routes/history');
 
 
 var app = express();
@@ -40,6 +41,7 @@ app.use('/signup',signup);
 app.use('/admin_dashboard',admin_dashboard);
 app.use('/create_user',create_user);
 app.use('/science',science);
+app.use('/history',history);
 
 
 // catch 404 and forward to error handler
