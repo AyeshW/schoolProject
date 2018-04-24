@@ -16,6 +16,7 @@ var create_user = require('./routes/create_user');
 var successfully_created = require('./routes/successfully_created');
 var science = require('./routes/science');
 var buddhism = require('./route/buddhism');
+var history = require('./routes/history');
 
 
 var app = express();
@@ -44,13 +45,13 @@ app.use('/create_user',create_user);
 app.use('/successfully_created',successfully_created);
 app.use('/science',science);
 app.use('/buddhism',buddhism);
+app.use('/history',history);
 
 
 // catch 404 and forward to error handler
 app.use(function(req,res){
     res.render('404.jade');
 });
-
 
 
 module.exports = app;
