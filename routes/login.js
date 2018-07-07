@@ -10,18 +10,28 @@ var mysql = require('mysql');
 var fs = require('fs');
 var http = require('http');
 var url = require('url');
-
-global.responseText = " dsf";
+var passport = require('passport');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    console.log(responseText);
+router.get('/',function(req, res, next) {
     res.render('login', { title: 'login' });
 });
 
-router.post("/", function(req, res){
-    console.log(req.body.username);
-    login(req.body.username,req.body.password,res,req);
+router.post("/", passport.authenticate("local-login",
+    {
+        successRedirect: "/dashboard",
+        failureRedirect: "/login",
+        failureFlash : true // allow flash messages
+    }), function(req, res){
+
+    console.log("hello");
+
+    if (req.body.remember) {
+        req.session.cookie.maxAge = 1000 * 60 * 3;
+    } else {
+        req.session.cookie.expires = false;
+    }
+    res.redirect('/');
 });
 
 function login(username,givenPassword,response,req) {
@@ -39,7 +49,7 @@ function login(username,givenPassword,response,req) {
             console.log(result);
             var string=JSON.stringify(result);
             if (string == "[]"){
-                console.log("There is no such an account!")
+                console.log("There is no such an account!");
             }else {
                 console.log('>> string: ', string);
                 var json = JSON.parse(string);
@@ -65,8 +75,11 @@ function login(username,givenPassword,response,req) {
     });
 }
 
-function test(doc){
-    var fsdv = dsf;
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
 }
 
 
