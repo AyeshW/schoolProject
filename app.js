@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -15,7 +16,7 @@ var admin_dashboard = require('./routes/admin_dashboard');
 var create_user = require('./routes/create_user');
 var successfully_created = require('./routes/successfully_created');
 var science = require('./routes/science');
-var buddhism = require('./route/buddhism');
+var buddhism = require('./routes/buddhism');
 var history = require('./routes/history');
 
 
@@ -47,11 +48,15 @@ app.use('/science',science);
 app.use('/buddhism',buddhism);
 app.use('/history',history);
 
+app.use(cookieParser());
+app.use(session({secret: 'temp'}));
+
 
 // catch 404 and forward to error handler
 app.use(function(req,res){
     res.render('404.jade');
 });
+
 
 
 module.exports = app;
