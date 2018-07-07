@@ -18,6 +18,7 @@ var successfully_created = require('./routes/successfully_created');
 var science = require('./routes/science');
 var buddhism = require('./routes/buddhism');
 var history = require('./routes/history');
+var buddhism=require('./routes/buddhism');
 
 
 var app = express();
@@ -47,6 +48,7 @@ app.use('/successfully_created',successfully_created);
 app.use('/science',science);
 app.use('/buddhism',buddhism);
 app.use('/history',history);
+app.use('/buddhism',buddhism);
 
 app.use(cookieParser());
 app.use(session({secret: 'temp'}));
