@@ -60,17 +60,17 @@ app.use('/student_absentnote',student_absentnote);
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+// app.use(function(req, res, next) {
+//   var err = new Error('Not Found');
+//
+//   err.status = 404;
+//   next(err);
+// });
 
-  err.status = 404;
-  next(err);
-});
-
-// catch 404 and forward to error handler
-app.use(function(req,res){
-    res.render('404.jade');
-});
+// // catch 404 and forward to error handler
+// app.use(function(req,res){
+//     res.render('404.jade');
+// });
 
 
 

@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var mysql=require('mysql');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -8,60 +9,37 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/a', function(req, res, next) {
-    console.log("here");
+   console.log("at a");
 });
 
 router.post('/b', function(req, res, next) {
+    savetoDB(req.body);
       console.log('hi');
 });
 
 module.exports = router;
 
+function savetoDB(body) {
+    var con = mysql.createConnection({
+        host: "sql12.freemysqlhosting.net",
+        user: "sql12246368",
+        password: "CeVtni3mrY",
+        database: "sql12246368"
+    });
 
+    con.connect(function(err) {
 
-function clic(element)
-{
-    //getting inputed data from the form one by one to variables.....
-    var name=document.getElementById("name").value;
-    var id=document.getElementById("Id").value;
-    var designation=document.getElementById("designation").value;
-    var reason=document.getElementById("reason").value;
-    var sdate=document.getElementById("sdate").value;
-    var edate=document.getElementById("edate").value;
-    var yes_no=document.getElementById("yes_no").value;
-    var classes=document.getElementById("classes").value;
-    var email=document.getElementById("email").value;
+       if(err) throw err;
+       console.log("Connected!");
+       console.log(body.Ifclasses);
 
+          //  var sql="INSERT INTO applyleave(name,id,designation,reason, sdate, edate,Ifclasses,classes, email) VALUES("+body.Name+','+body.ID+','+body.Designation+','+body.Reason+','+body.Sdate+','+body.Edate+','+Ifclasses+','+body.Classes+','+body.Email+")";
+        var sql="INSERT INTO applyleave(name,id,designation,reason, sdate, edate,Ifclasses,classes, email) VALUES ?";
+        var values=[[body.Name,body.ID,body.Designation,body.Reason,body.Sdate,body.Edate,body.Ifclasses,body.Classes,body.Email]];
+        con.query(sql, [values], function (err, result) {
+            if (err) throw err;
+            console.log(" records inserted: " + result.affectedRows);
+        });
+    });
 
-    //end of tracking data from html file....
-    //document.getElementById("submitbtn").value="sent";
-
-    // alert(teachers_name+" "+teachers_id+" "+teachers_designation+" sdate "+ sdate+" yn "+if_classes+" e "+teachers_email);
-    if(sdate>edate){
-        //when the starting date and end dates are not matching ..
-        document.getElementById("IfdatesAreInvalid").style.display="inline";
-        //alert("Invalid date fields are given. please fill again");
-        console.log("Invalid date fields given.");
-    }
-    else{
-        document.getElementById("IfdatesAreInvalid").style.display="none";
-
-    }
-
-    if(teachers_id.length !=5){
-        document.getElementById("IfIdIsLong").style.display="inline";
-    }else{
-        document.getElementById("IfIdIsLong").style.display="none";
-
-    }
-
-    if(if_classes=="Yes" & classes.length==0){
-      document.getElementById("NotGivenClasses").style.display="inline";
-    }
-    else{
-        document.getElementById("NotGivenClasses").style.display="none";
-
-    }
-
-
-};
+}
