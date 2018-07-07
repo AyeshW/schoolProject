@@ -1,0 +1,230 @@
+doctype html
+
+html
+    head
+        title Student Registration Form
+        // metatags
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+        //meta(name='keywords', content='Sports Camp Registration Form a Flat Responsive Widget,Login form widgets, Sign up Web 	forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements')
+        script(type='application/x-javascript').
+            addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+            function hideURLbar(){ window.scrollTo(0,1); }
+        // Meta tag Keywords
+        // css files
+        link(rel='stylesheet', href='css/jquery-ui.css')
+        link(rel='stylesheet', href='/stylesheets/registration.css', type='text/css', media='all')
+        // stylesheet-css
+        link(rel='stylesheet prefetch', href='https://fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i')
+        //link(href='//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i', rel='stylesheet')
+        link(rel='stylesheet prefetch', href='https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i')
+        // //css files
+    body
+        h1 Registration Form
+        .w3l-main
+            .w3l-from
+                form(action='/student_registration', method='post')
+                    .w3l-user1
+                        label.head
+                            | Student's Full Name
+                            span.w3l-star  *
+                        input(type='text', id='name', name="Students's Full Name", placeholder='Kasun Prasad Perera', required='')
+                    .w3l-user2
+                        label.head
+                            | Name with Initials
+                            span.w3l-star  *
+                        input(type='text', id='nameinit', name="Students's Full Name", placeholder="K.P. Perera", required='')
+                    .w3l-mail
+                        label.head
+                            | Email
+                            span.w3l-star  *
+                        input(type='email', id='mail1' name='email', placeholder='kasun@ymail.com', required='')
+                    .clear
+                    .w3l-details1
+                        .w3l-num1
+                            label.head
+                                | Phone Number
+                            input(type='number', id='mobile', name='phone_number', placeholder='07XXXXXXXX')
+                            p(id='mob',name='mob',style='display:none; color:red;') Invalid Phone Number. Enter 10 Digit Number
+                        .w3l-date
+                            label.head
+                                | Birth Day
+                                span.w3l-star  *
+
+                            .styled-input
+                                input(type='date', id='birthday', name='ddate', placeholder='MM/DD/YYYY', value='')
+                                //input#datepicker.date.hasDatepicker(name='Text', type='text', value='MM/DD/YYYY', onfocus="this.value = '';", onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}", required='')
+                                p(id='pdate',name ='pdate', style='display:none; color:red;') Invalid Birthday
+                        .clear
+                        .gender
+                            label.head
+                                | Gender
+                                span.w3l-star  *
+                                select.form-control(id= 'gender',required='')
+                                    option Male
+                                    option Female
+
+                        .w3l-options2
+                            label.head
+                                | Grade
+                                span.w3l-star  *
+                            select.category2(id= 'grade', name='grade',required='')
+                                option(value='1') Grade-1
+                                option(value='2') Grade-2
+                                option(value='3') Grade-3
+                                option(value='4') Grade-4
+                                option(value='5') Grade-5
+                                option(value='6') Grade-6
+                                option(value='7') Grade-7
+                                option(value='8') Grade-8
+                                option(value='9') Grade-9
+                                option(value='10') Grade-10
+                                option(value='12') Grade-12
+                        .clear
+                    .w3l-user1
+                        label.head
+                            | Street Address
+                            span.w3l-star  *
+                        input(type='text', id='street',name='Address', placeholder='', required='')
+                    .w3l-num2
+                        label.head
+                            | City
+                            span.w3l-star  *
+                        input(type='text', id= 'city',name='City', placeholder='', required='')
+                    .w3l-sym
+                        label.head
+                            | State
+                            span.w3l-star  *
+                        input(type='text', id='state',name='State', placeholder='', required='')
+                    .clear
+                    .w3l-num2
+                        label.head
+                            | Postal / Zip Code
+                            span.w3l-star  *
+                        input(type='text',id='pcode', name='Postal / Zip Code', placeholder='', required='')
+                    .w3l-options2
+                        label.head
+                    .clear
+
+                    .w3l-lef1
+                        h3 Parent/Guardian Information
+                        .w3l-user1
+                            label.head
+                                | Name
+                                span.w3l-star  *
+                            input(type='text', id='pname',name='Username', placeholder='', required='')
+                        .clear
+                        .w31-num2
+                            label.head
+                                | Designation
+                            input(type='text', name='Designation', placeholder='')
+
+                        .w3l-num1
+                            label.head
+                                | Home Number
+                                span.w3l-star  *
+                            input(type='number',id='home', name='Home_Number', placeholder='', required='')
+                            p(id='hom', name='hom',style='display:none; color:red;') Invalid Phone Number. Enter 10 Digit Number
+                        .clear
+                        .w3l-mail
+                            label.head
+                                | Email
+                                span.w3l-star  *
+                            input(type='email',id='mail2', name='email2', placeholder='kasun@ymail.com', required='')
+                        .clear
+                    .w3l-rem
+                        .w3l-right
+                            label.w3l-set2 Relationship
+                            textarea
+                        .btn
+                            input(type='submit', id='submit',name='submit', value='Submit', onclick='validate()')
+                        script.
+                            function validate() {
+                                var birthday = document.getElementById("birthday").value;
+                                var grade = document.getElementById("grade").value;
+                                var mobile = document.getElementById("mobile").value;
+                                var home = document.getElementById("home").value;
+                                var date = new Date();
+
+                                var birthday1 = new Date(birthday);
+
+                                var age = date.getFullYear() - birthday1.getFullYear();
+                                alert(age);
+                                console.log(age);
+                                switch (grade) {
+                                    case "1":
+                                        if (age > 6 || age<5){
+                                            document.getElementById("pdate").style.display = "inline";
+                                        }
+                                        break;
+                                    case "2":
+                                        if (age > 7 || age < 6) {
+                                            document.getElementById("pdate").style.display = "inline";
+                                        }
+                                        break;
+                                    case "3":
+                                        if (age > 8 || age < 7) {
+                                            document.getElementById("pdate").style.display = "inline";
+                                        }
+                                        break;
+                                    case "4":
+                                        if (age > 9 || age < 8) {
+                                            document.getElementById("pdate").style.display = "inline";
+                                        }
+                                        break;
+                                    case "5":
+                                        if (age > 10 || age < 9) {
+                                            document.getElementById("pdate").style.display = "inline";
+                                        }
+                                        break;
+                                    case "6":
+                                        if (age > 11 || age < 10) {
+                                            document.getElementById("pdate").style.display = "inline";
+                                        }
+                                        break;
+                                    case "7":
+                                        if (age > 12 || age < 11) {
+                                            document.getElementById("pdate").style.display = "inline";
+                                        }
+                                        break;
+                                    case "8":
+                                        if (age > 13 || age < 12) {
+                                            document.getElementById("pdate").style.display = "inline";
+                                        }
+                                        break;
+                                    case "9":
+                                        if (age > 14 || age < 13) {
+                                            document.getElementById("pdate").style.display = "inline";
+                                        }
+                                        break;
+                                    case "10":
+                                        if (age > 15 || age < 14) {
+                                            document.getElementById("pdate").style.display = "inline";
+                                        }
+                                        break;
+                                    case "12":
+                                        if (age > 17 || age < 16) {
+                                            document.getElementById("pdate").style.display = "inline";
+                                        }
+                                        break;
+
+                                }
+                                alert("hi");
+
+                                if (mobile.toString().length != 10) {
+                                    document.getElementById("mob").style.display = "inline";
+                                }
+                                if (home.toString().length != 10) {
+                                    document.getElementById("hom").style.display = "inline";
+                                }
+
+                            }
+                    .clear
+        footer
+            | © 2018 Student Registration Form. All Rights Reserved | eSolutions
+
+        // Default-JavaScript
+        script(type='text/javascript', src='js/jquery-2.1.4.min.js')
+        // Calendar
+        script(src='js/jquery-ui.js')
+

@@ -1,0 +1,110 @@
+doctype html
+
+html
+    head
+        title Absent Note
+        // metatags
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+        //meta(name='keywords', content='Sports Camp Registration Form a Flat Responsive Widget,Login form widgets, Sign up Web 	forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements')
+        script(type='application/x-javascript').
+            addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+            function hideURLbar(){ window.scrollTo(0,1); }
+        // Meta tag Keywords
+        // css files
+        link(rel='stylesheet', href='css/jquery-ui.css')
+        link(rel='stylesheet', href='/stylesheets/registration.css', type='text/css', media='all')
+        // stylesheet-css
+        link(rel='stylesheet prefetch', href='https://fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i')
+        //link(href='//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i', rel='stylesheet')
+        link(rel='stylesheet prefetch', href='https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i')
+        // //css files
+    body
+        h1 Absent Note
+        .w3l-main
+            .w3l-from
+                form(action='/', method='post')
+                    .w3l-user1
+                        label.head
+                            | Student's Full Name
+                            span.w3l-star  *
+                        input(type='text', id='name', name="Students's Full Name", placeholder='Kasun Prasad Perera', required='')
+
+                    .w3l-number
+                        label.head
+                            | Index Number
+                            span.w3l-star  *
+                            input(type='number', id='index', name="index", placeholder='5 digit index number', required='')
+                     .clear
+                    .w3l-mail
+                        label.head
+                            | Email
+                            span.w3l-star  *
+                        input(type='email', id='mail1' name='email', placeholder='kasun@ymail.com', required='')
+                    .w3l-number
+                        label.head
+                            | Parent's Phone Number
+                            span.w3l-star  *
+                        input(type='number', id='mobile', name='phone number', placeholder='07XXXXXXXX', required='')
+                        p(id='mob',style='display:none; color:red;') Invalid Phone Number. Enter 10 Digit Number
+                    .clear
+                    .w3l-date
+                        label.head
+                            | Absent Dates
+                            button(onclick='addMore()') Add
+                            button(onclick='Undo()') Undo
+                            span.w3l-star  *
+
+                        .styled-input
+                            input#date1(type='date', name='from', placeholder='MM/DD/YYYY')
+
+                            .w3l-sym1
+                                    div
+                                        ul#dates
+                            script.
+                               // var today = new Date();
+                                function addMore() {
+                                    var absent_date = document.getElementById("date1").value;
+
+                                    //if(absent_date>today )
+                                    var node = document.createElement("LI");
+                                    var textnode = document.createTextNode(absent_date);
+                                    node.appendChild(textnode);
+                                    document.getElementById("dates").appendChild(node);
+                                }
+                               function Undo() {
+                                   var child = document.getElementById("dates").lastChild;
+                                   document.getElementById("dates").removeChild(child);
+                               }
+
+                            p(id='date', style='display:none; color:red;') Invalid Date
+                     .clear
+                    .w3l-rem
+                        .w3l-right
+                            label.head
+                                | Reason for Absence
+                                span.w3l-star  *
+                            textarea
+                    .w3l-date
+                        label.head
+                            | Date
+                            span.w3l-star  *
+
+                        .styled-input
+                            input#date2(type='date', name='from', placeholder='MM/DD/YYYY')
+                    .w3l-sym
+                        label.head
+                            .btn1
+                                input(type='submit', id='submit',name='submit', value='Send')
+                    .clear
+
+
+
+        footer
+            | © 2018 Absent Note. All Rights Reserved | eSolutions
+
+        // Default-JavaScript
+        script(type='text/javascript', src='js/jquery-2.1.4.min.js')
+        // Calendar
+        script(src='js/jquery-ui.js')
+
