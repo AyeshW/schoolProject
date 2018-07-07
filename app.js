@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -13,7 +14,9 @@ var mail_box = require('./routes/mailbox');
 var signup = require('./routes/signup');
 var admin_dashboard = require('./routes/admin_dashboard');
 var create_user = require('./routes/create_user');
+var successfully_created = require('./routes/successfully_created');
 var science = require('./routes/science');
+var buddhism = require('./routes/buddhism');
 var history = require('./routes/history');
 var buddhism=require('./routes/buddhism');
 var teachers_apply_leave=require('./routes/Teachers_Apply_Leave_Form');
@@ -44,8 +47,11 @@ app.use('/signup',signup);
 app.use('/admin_dashboard',admin_dashboard);
 app.use('/create_user',create_user);
 app.use('/science',science);
+app.use('/buddhism',buddhism);
 app.use('/history',history);
 app.use('/buddhism',buddhism);
+app.use('/successfully_created',successfully_created);
+
 app.use('/Teachers_Apply_Leave_Form',teachers_apply_leave);
 app.use('/StudentAttendenceSheet',student_attendence_sheet);
 
@@ -57,24 +63,15 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+app.use(cookieParser());
+app.use(session({secret: 'temp'}));
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+app.use(function(req,res){
+    res.render('404.jade');
 });
+
 
 
 module.exports = app;

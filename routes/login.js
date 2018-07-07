@@ -65,5 +65,9 @@ function login(username,givenPassword,response,req) {
     });
 }
 
+function test(doc){
+    var fsdv = dsf;
+}
+
 
 module.exports = router;
