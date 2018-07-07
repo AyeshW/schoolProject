@@ -22,6 +22,8 @@ var buddhism=require('./routes/buddhism');
 var teachers_apply_leave=require('./routes/Teachers_Apply_Leave_Form');
 var student_attendence_sheet=require('./routes/StudentAttendenceSheet');
 
+var student_registration = require('./routes/student_registration');
+var student_absentnote = require('./routes/student_absentnote');
 
 var app = express();
 
@@ -49,11 +51,12 @@ app.use('/create_user',create_user);
 app.use('/science',science);
 app.use('/buddhism',buddhism);
 app.use('/history',history);
-app.use('/buddhism',buddhism);
 app.use('/successfully_created',successfully_created);
 
 app.use('/Teachers_Apply_Leave_Form',teachers_apply_leave);
 app.use('/StudentAttendenceSheet',student_attendence_sheet);
+app.use('/student_registration',student_registration);
+app.use('/student_absentnote',student_absentnote);
 
 
 // catch 404 and forward to error handler
