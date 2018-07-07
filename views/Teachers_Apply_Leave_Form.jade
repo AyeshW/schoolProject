@@ -1,7 +1,46 @@
 doctype html
-
 html(lang='en')
     head
+        script.
+            function clic(element) {
+                //getting inputed data from the form one by one to variables.....
+                var name = document.getElementById("name").value;
+                var id = document.getElementById("Id").value;
+                var designation = document.getElementById("designation").value;
+                var reason = document.getElementById("reason").value;
+                var sdate = document.getElementById("sdate").value;
+                var edate = document.getElementById("edate").value;
+                var yes_no = document.getElementById("yes_no").value;
+                var classes = document.getElementById("classes").value;
+                var email = document.getElementById("email").value;
+
+                //end of tracking data from html file....
+                //document.getElementById("submitbtn").value="sent";
+                // alert(teachers_name+" "+teachers_id+" "+teachers_designation+" sdate "+ sdate+" yn "+if_classes+" e "+teachers_email);
+                if (sdate > edate) {
+                    //when the starting date and end dates are not matching ..
+                    document.getElementById("IfdatesAreInvalid").style.display = "inline";
+                    //alert("Invalid date fields are given. please fill again");
+                    console.log("Invalid date fields given.");
+                }
+                else {
+                    document.getElementById("IfdatesAreInvalid").style.display = "none";
+                }
+                if (id.length != 5) {
+                    document.getElementById("IfIdIsLong").style.display = "inline";
+                } else {
+                    document.getElementById("IfIdIsLong").style.display = "none";
+                }
+                if (yes_no== "Yes" & classes.length == 0) {
+                    document.getElementById("NotGivenClasses").style.display = "inline";
+                }
+                else {
+                    document.getElementById("NotGivenClasses").style.display = "none";
+                }
+                alert("hi");
+
+            };
+
         style(type='text/css').
             @media  only screen and (min-device-width: 768px)
             {
@@ -31,17 +70,18 @@ html(lang='en')
         title Apply Leave Form
         link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css')
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
-        script(src="/routes/Teachers_Apply_Leave_Form.js")
+        script(src='Teachers_Apply_Leave_Form.js')
     body
         .container
             .form-container
                 h1
                     | Apply Leave Form
-                form#reused_form(method='post')
+                 form#reused_form(action='/Teachers_Apply_Leave_Form/b',method='post')
                     label(for='name') Your Name:
                     input#name(type='text', name='Name', required='', maxlength='50')
                     label(for='Id') Teacher's ID:
                     input#Id(type='number', name='ID', required='', maxlength='10')
+                    p#IfIdIsLong(style='color:red; display:none' name='IfIdIsLong') Length of Id must be 5.
                     label(for='designation') Designation:
                     input#designation(type='text', name='Designation', required='', maxlength='20')
                     label(for='reason') Reason:
@@ -50,15 +90,17 @@ html(lang='en')
                     input#sdate(type='date', name='Sdate')
                     label(for='edate') To:
                     input#edate(type='date', name='Edate')
+                    p#IfdatesAreInvalid(style=' color:red; display:none ' name='IfdatesAreInvalid') Invalid Date fields given.Please fill again
                     label(for='yes_no') Any classes on above Period?
                     select#yes_no(name='Ifclasses')
                         option(value='Yes') Yes
                         option(value='No') No
                     label(for='classes') Briefly indicate the dates and times of classes
                     input#classes(type='text', name='Classes')
+                    p#NotGivenClasses(style='color:red; display:none' name='NotGivenClasses') You must fill this field
                     label(for='email') Email Address:
                     input#email(type='email', name='Email', required='', maxlength='50')
-                    button#submitbtn.button-primary(type='submit', onclick='clic(this)') Send Request
+                    button#submitbtn.button-primary(type='submit', name='s',onclick='clic(this)') Send Request
                 #success_message(style='display:none')
                     h3 Submitted the form successfully!
                     p  We will get back to you soon.

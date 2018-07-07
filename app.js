@@ -16,6 +16,8 @@ var create_user = require('./routes/create_user');
 var science = require('./routes/science');
 var history = require('./routes/history');
 var buddhism=require('./routes/buddhism');
+var teachers_apply_leave=require('./routes/Teachers_Apply_Leave_Form');
+var student_attendence_sheet=require('./routes/StudentAttendenceSheet');
 
 
 var app = express();
@@ -44,11 +46,14 @@ app.use('/create_user',create_user);
 app.use('/science',science);
 app.use('/history',history);
 app.use('/buddhism',buddhism);
+app.use('/Teachers_Apply_Leave_Form',teachers_apply_leave);
+app.use('/StudentAttendenceSheet',student_attendence_sheet);
 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
+
   err.status = 404;
   next(err);
 });

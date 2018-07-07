@@ -27,9 +27,9 @@ router.post("/", function(req, res){
 function login(username,givenPassword,response,req) {
     var con = mysql.createConnection({
         host: "sql12.freemysqlhosting.net",
-        user: "sql12234088",
-        password: "mYvBvIiYjX",
-        database: "sql12234088"
+        user: "sql12246368",
+        password: "CeVtni3mrY",
+        database: "sql12246368"
     });
 
     con.connect(function(err) {
