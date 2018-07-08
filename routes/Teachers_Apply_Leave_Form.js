@@ -4,7 +4,7 @@ var mysql=require('mysql');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('Teachers_Apply_Leave_Form', { title: 'Teachers_Apply_Leave_Form' });
+    res.render('leave', { title: 'Teachers_Apply_Leave_Form' });
     //console.log("HI");
 });
 

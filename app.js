@@ -105,8 +105,7 @@ function isLoggedIn(req, res, next) {
     res.redirect('/');
 }
 app.use('/Teachers_registration',teachers_registration);
-app.use('/teachers_attendence',teachers_attendence);
-// catch 404 and forward to error handler
+
 
 //catch 404 and forward to error handler
 
