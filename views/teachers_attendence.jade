@@ -44,6 +44,7 @@ html(lang='en')
             table {
                 font-family: arial, sans-serif;
                 border-collapse: collapse;
+                text-align: center;
                 width: 100%;
             }
             td, th {
@@ -57,54 +58,54 @@ html(lang='en')
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1')
-        title Student Attendence Sheet
+        title Apply Leave Form
         link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css')
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
-        script(src='./routes/StudentAttendenceSheet.js')
+        script(src='AttendenceSheet.js')
     body
         .container
             .form-container
-                h1
-                    | Daily Attendence Sheet
-                form#reused_form('/StudentAttendenceSheet/a',method='post')
+                h2(style='color:deepskyblue;text-align: center')
+                    | Teacher's Attendence Sheet
+                form#reused_form(method='post')
                     label#TodayIsText(for='today', style='float:left') Date :
                     // <input id="date" type="date" name="Date" placeholder='MM/DD/YYYY'  >
-                    input#today(type='date', name='Date', placeholder='Pick a date')
-                    h2(style='align:center') Student Table
+                    input#today(type='date', name='Date')
+                    h3(style='align:center') Teacher Table
                     table
                         tr
-                            th Index No
-                            th Student
-                            th Presence
+                            th(style='text-align: center;') Id No
+                            th Teacher
+                            th(style='text-align: center;') Presence
                         tr
-                            td 16095
-                            td Alfreds Futterkiste
-                            td
+                            td(style='text-align: center;') 20123
+                            td(name="tr")  Alfreds Futterkiste
+                            td(style='text-align: center;')
                                 input#p1(type='checkbox')
                         tr
-                            td 16096
-                            td Centro comercial Moctezuma
+                            td(style='text-align: center;') 20146
+                            td Centro comercia
                             td
                                 input#p2(type='checkbox')
                         tr
-                            td 16098
+                            td(style='text-align: center;') 20155
                             td Ernst Handel
-                            td
+                            td(style='text-align: center;')
                                 input#p3(type='checkbox')
                         tr
-                            td 16101
+                            td(style='text-align: center;') 20324
                             td Island Tradi
-                            td
+                            td(style='text-align: center;')
                                 input#p4(type='checkbox')
                         tr
-                            td 16104
+                            td(style='text-align: center;') 20433
                             td Laughing Bacchus Winecellars
-                            td
+                            td(style='text-align: center;')
                                 input#p5(type='checkbox')
                         tr
-                            td 16105
+                            td(style='text-align: center;') 20932
                             td Magazzini Alimentari Riuniti
-                            td
+                            td(style='text-align: center;')
                                 input#p6(type='checkbox')
                     button#submitbtn.button-primary(type='submit', onclick='renderNames()') Confirm
                 #success_message(style='display:none')
