@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session')
+var passport = require('passport');
+var passportCover = require('./routes/passport.js');
+var flash =require('connect-flash');
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -25,6 +29,10 @@ var student_attendence_sheet=require('./routes/StudentAttendenceSheet');
 var student_registration = require('./routes/student_registration');
 var student_absentnote = require('./routes/student_absentnote');
 
+var teachers_dashboard = require('./routes/teachers_dashboard');
+
+var principals_dashboard = require('./routes/principals_dashboard')
+
 var app = express();
 
 app.use(bodyParser.json());
@@ -40,6 +48,25 @@ app.use(logger('dev'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//==========Passport configuration=============
+app.use(require("express-session")({
+    secret: "Once again Rusty wins cutest dog!",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passportCover(passport);
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+//=====Set current user=====
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    next();
+});
+
+
 app.use('/', index);
 app.use('/users', users);
 app.use('/login',login);
@@ -51,26 +78,35 @@ app.use('/create_user',create_user);
 app.use('/science',science);
 app.use('/buddhism',buddhism);
 app.use('/history',history);
+app.use('/buddhism',buddhism);
 app.use('/successfully_created',successfully_created);
 
 app.use('/Teachers_Apply_Leave_Form',teachers_apply_leave);
 app.use('/StudentAttendenceSheet',student_attendence_sheet);
 app.use('/student_registration',student_registration);
 app.use('/student_absentnote',student_absentnote);
+app.use('/teachers_dashboard',teachers_dashboard);
+app.use('/principals_dashboard' ,principals_dashboard);
+
+// route middleware to make sure
+function isLoggedIn(req, res, next) {
+
+    // if user is authenticated in the session, carry on
+    if (req.isAuthenticated())
+        return next();
+
+    // if they aren't redirect them to the home page
+    res.redirect('/');
+}
+
+
+//catch 404 and forward to error handler
 
 
 // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   var err = new Error('Not Found');
-//
-//   err.status = 404;
-//   next(err);
-// });
-
-// // catch 404 and forward to error handler
-// app.use(function(req,res){
-//     res.render('404.jade');
-// });
+app.use(function(req,res){
+    res.render('404.jade');
+});
 
 
 

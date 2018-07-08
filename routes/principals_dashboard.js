@@ -1,13 +1,14 @@
 /**
- * Created by Hasitha Isuru on 04/04/2018.
+ * Created by Hasitha Isuru on 08/07/2018.
  */
+
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 
 /* GET home page. */
 router.get('/',isLoggedIn ,function(req, res, next) {
-    res.render('student_dashboard', { title: 'dashboard', name: req.user.username });
+    res.render('principals_dashboard', { title: 'dashboard', name: req.user.username });
 });
 
 router.get('/logout', function(req, res) {
@@ -21,15 +22,9 @@ function isLoggedIn(req, res, next) {
     // if user is authenticated in the session, carry on
     if (req.isAuthenticated()) {
         console.log("asdfaf "+req.user.category);
-        if(req.user.category == "student") {
+        if(req.user.category == "principal") {
             return next();
-        }
-        if(req.user.category == "teacher"){
-            res.redirect('/teachers_dashboard');
-        }
-        if(req.user.category == "principal"){
-            res.redirect('/principals_dashboard');
-        }else{
+        } else{
             res.redirect('/');
         }
     }else{

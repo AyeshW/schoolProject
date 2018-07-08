@@ -94,23 +94,18 @@ module.exports = function(passport) {
         },
         function(req, username, password, done) { // callback with email and password from our form
             console.log('pass '+username);
-            console.log('passsssssssssssssssssss');
             console.log('pass pass '+password);
             connection.query("SELECT * FROM `userlogin` WHERE `username` = '" + username + "'",function(err,rows){
-                console.log('passsssssssssssssssssssq');
                 if (err)
                     return done(err);
                 if (!rows.length) {
-                    console.log('passsssssssssssssssssssa');
                     return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
                 }
-                console.log('passssssssssssssssssssaas');
                 // if the user is found but the password is wrong
                 if (!( rows[0].password == password))
                     return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
 
                 // all is well, return successful user
-                console.log('passsssssssssssssssssssqqq');
                 return done(null, rows[0]);
 
             });

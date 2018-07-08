@@ -1,4 +1,7 @@
 /**
+ * Created by Hasitha Isuru on 08/07/2018.
+ */
+/**
  * Created by Hasitha Isuru on 04/04/2018.
  */
 var express = require('express');
@@ -23,19 +26,15 @@ function isLoggedIn(req, res, next) {
         console.log("asdfaf "+req.user.category);
         if(req.user.category == "student") {
             return next();
-        }
-        if(req.user.category == "teacher"){
-            res.redirect('/teachers_dashboard');
-        }
-        if(req.user.category == "principal"){
-            res.redirect('/principals_dashboard');
-        }else{
+        }else if(req.user.category){
+
+        } else{
             res.redirect('/');
         }
-    }else{
-        // if they aren't redirect them to the home page
-        res.redirect('/');
     }
+
+    // if they aren't redirect them to the home page
+    res.redirect('/');
 }
 
 

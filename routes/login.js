@@ -14,7 +14,8 @@ var passport = require('passport');
 
 /* GET home page. */
 router.get('/',function(req, res, next) {
-    res.render('login', { title: 'login' });
+    console.log(req.flash.loginMessage);
+    res.render('login', { title: 'login',passed: req.flash('loginMessage') });
 });
 
 router.post("/", passport.authenticate("local-login",
@@ -33,6 +34,23 @@ router.post("/", passport.authenticate("local-login",
     }
     res.redirect('/');
 });
+
+// route middleware to make sure
+function isLoggedIn(req, res, next) {
+
+    // if user is authenticated in the session, carry on
+    if (req.isAuthenticated()) {
+        console.log("asdfaf "+req.user.category);
+        if(req.user.category == "student") {
+            res.redirect('/dashboard');
+        }else{
+            return next();
+        }
+    }
+
+    // if they aren't redirect them to the home page
+    return next();
+}
 
 function login(username,givenPassword,response,req) {
     var con = mysql.createConnection({
@@ -68,19 +86,13 @@ function login(username,givenPassword,response,req) {
                     console.log("Wrong password!");
                     console.log(testVary);
                     responseText = "Wrong password!";
-                    response.redirect('/login');
+                    response.redirect('/login/wrong_password');
                 }
             }
         });
     });
 }
 
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-}
 
 
 module.exports = router;
