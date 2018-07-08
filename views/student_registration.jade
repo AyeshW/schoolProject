@@ -28,12 +28,12 @@ html
                         label.head
                             | Student's Full Name
                             span.w3l-star  *
-                        input(type='text', id='name', name="Students's Full Name", placeholder='Kasun Prasad Perera', required='')
+                        input(type='text', id='name', name="StudentsFullName", placeholder='Kasun Prasad Perera', required='')
                     .w3l-user2
                         label.head
                             | Name with Initials
                             span.w3l-star  *
-                        input(type='text', id='nameinit', name="Students's Full Name", placeholder="K.P. Perera", required='')
+                        input(type='text', id='nameinit', name="NameInit", placeholder="K.P. Perera", required='')
                     .w3l-mail
                         label.head
                             | Email
@@ -45,7 +45,7 @@ html
                             label.head
                                 | Phone Number
                             input(type='number', id='mobile', name='phone_number', placeholder='07XXXXXXXX')
-                            p(id='mob',name='mob',style='display:none; color:red;') Invalid Phone Number. Enter 10 Digit Number
+                            p(id='mob',name='mob',style='display:inline; color:red;') #{message1}
                         .w3l-date
                             label.head
                                 | Birth Day
@@ -54,13 +54,14 @@ html
                             .styled-input
                                 input(type='date', id='birthday', name='ddate', placeholder='MM/DD/YYYY', value='')
                                 //input#datepicker.date.hasDatepicker(name='Text', type='text', value='MM/DD/YYYY', onfocus="this.value = '';", onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}", required='')
-                                p(id='pdate',name ='pdate', style='display:none; color:red;') Invalid Birthday
+                                p(id='pdate',name ='pdate', style='display:inline; color:red;') #{message2}
+                                p(id='pdate2',name ='pdate2', style='display:inline; color:red;') #{message}
                         .clear
                         .gender
                             label.head
                                 | Gender
                                 span.w3l-star  *
-                                select.form-control(id= 'gender',required='')
+                                select.form-control(id= 'gender',name='gender',required='')
                                     option Male
                                     option Female
 
@@ -90,18 +91,18 @@ html
                         label.head
                             | City
                             span.w3l-star  *
-                        input(type='text', id= 'city',name='City', placeholder='', required='')
+                        input(type='text', id= 'city',name='city', placeholder='', required='')
                     .w3l-sym
                         label.head
                             | State
                             span.w3l-star  *
-                        input(type='text', id='state',name='State', placeholder='', required='')
+                        input(type='text', id='state',name='states', placeholder='', required='')
                     .clear
                     .w3l-num2
                         label.head
                             | Postal / Zip Code
                             span.w3l-star  *
-                        input(type='text',id='pcode', name='Postal / Zip Code', placeholder='', required='')
+                        input(type='text',id='pcode', name='Postal_Code', placeholder='', required='')
                     .w3l-options2
                         label.head
                     .clear
@@ -114,17 +115,18 @@ html
                                 span.w3l-star  *
                             input(type='text', id='pname',name='Username', placeholder='', required='')
                         .clear
-                        .w31-num2
+                        .w3l-num2
                             label.head
                                 | Designation
-                            input(type='text', name='Designation', placeholder='')
+                                //span.w3l-star  *
+                            input(type='text', id= 'designation',name='designation', placeholder='')
 
-                        .w3l-num1
+                        .w3l-num17
                             label.head
                                 | Home Number
                                 span.w3l-star  *
                             input(type='number',id='home', name='Home_Number', placeholder='', required='')
-                            p(id='hom', name='hom',style='display:none; color:red;') Invalid Phone Number. Enter 10 Digit Number
+                            p(id='hom', name='hom',style='display:inline; color:red;') #{message3}
                         .clear
                         .w3l-mail
                             label.head
@@ -135,10 +137,10 @@ html
                     .w3l-rem
                         .w3l-right
                             label.w3l-set2 Relationship
-                            textarea
+                            textarea(name='relation')
                         .btn
                             input(type='submit', id='submit',name='submit', value='Submit', onclick='validate()')
-                        script.
+                        //script.
                             function validate() {
                                 var birthday = document.getElementById("birthday").value;
                                 var grade = document.getElementById("grade").value;
@@ -147,77 +149,107 @@ html
                                 var date = new Date();
 
                                 var birthday1 = new Date(birthday);
+                                //alert(birthday1);
+                                if (birthday1 == 'Invalid Date') {
+                                    document.getElementById("pdate").style.display = "inline";
+                                } else {
+                                    document.getElementById("pdate").style.display = "none";
 
-                                var age = date.getFullYear() - birthday1.getFullYear();
-                                alert(age);
-                                console.log(age);
-                                switch (grade) {
-                                    case "1":
-                                        if (age > 6 || age<5){
-                                            document.getElementById("pdate").style.display = "inline";
-                                        }
-                                        break;
-                                    case "2":
-                                        if (age > 7 || age < 6) {
-                                            document.getElementById("pdate").style.display = "inline";
-                                        }
-                                        break;
-                                    case "3":
-                                        if (age > 8 || age < 7) {
-                                            document.getElementById("pdate").style.display = "inline";
-                                        }
-                                        break;
-                                    case "4":
-                                        if (age > 9 || age < 8) {
-                                            document.getElementById("pdate").style.display = "inline";
-                                        }
-                                        break;
-                                    case "5":
-                                        if (age > 10 || age < 9) {
-                                            document.getElementById("pdate").style.display = "inline";
-                                        }
-                                        break;
-                                    case "6":
-                                        if (age > 11 || age < 10) {
-                                            document.getElementById("pdate").style.display = "inline";
-                                        }
-                                        break;
-                                    case "7":
-                                        if (age > 12 || age < 11) {
-                                            document.getElementById("pdate").style.display = "inline";
-                                        }
-                                        break;
-                                    case "8":
-                                        if (age > 13 || age < 12) {
-                                            document.getElementById("pdate").style.display = "inline";
-                                        }
-                                        break;
-                                    case "9":
-                                        if (age > 14 || age < 13) {
-                                            document.getElementById("pdate").style.display = "inline";
-                                        }
-                                        break;
-                                    case "10":
-                                        if (age > 15 || age < 14) {
-                                            document.getElementById("pdate").style.display = "inline";
-                                        }
-                                        break;
-                                    case "12":
-                                        if (age > 17 || age < 16) {
-                                            document.getElementById("pdate").style.display = "inline";
-                                        }
-                                        break;
+                                    var age = date.getFullYear() - birthday1.getFullYear();
+                                    //alert(age);
+                                    console.log(age);
+                                    switch (grade) {
+                                        case "1":
+                                            if (age > 6 || age < 5) {
+                                                document.getElementById("pdate").style.display = "inline";
+                                            } else {
+                                                document.getElementById("pdate").style.display = "none";
+                                            }
+                                            break;
+                                        case "2":
+                                            if (age > 7 || age < 6) {
+                                                document.getElementById("pdate").style.display = "inline";
+                                            } else {
+                                                document.getElementById("pdate").style.display = "none";
+                                            }
+                                            break;
+                                        case "3":
+                                            if (age > 8 || age < 7) {
+                                                document.getElementById("pdate").style.display = "inline";
+                                            } else {
+                                                document.getElementById("pdate").style.display = "none";
+                                            }
+                                            break;
+                                        case "4":
+                                            if (age > 9 || age < 8) {
+                                                document.getElementById("pdate").style.display = "inline";
+                                            } else {
+                                                document.getElementById("pdate").style.display = "none";
+                                            }
+                                            break;
+                                        case "5":
+                                            if (age > 10 || age < 9) {
+                                                document.getElementById("pdate").style.display = "inline";
+                                            } else {
+                                                document.getElementById("pdate").style.display = "none";
+                                            }
+                                            break;
+                                        case "6":
+                                            if (age > 11 || age < 10) {
+                                                document.getElementById("pdate").style.display = "inline";
+                                            } else {
+                                                document.getElementById("pdate").style.display = "none";
+                                            }
+                                            break;
+                                        case "7":
+                                            if (age > 12 || age < 11) {
+                                                document.getElementById("pdate").style.display = "inline";
+                                            } else {
+                                                document.getElementById("pdate").style.display = "none";
+                                            }
+                                            break;
+                                        case "8":
+                                            if (age > 13 || age < 12) {
+                                                document.getElementById("pdate").style.display = "inline";
+                                            } else {
+                                                document.getElementById("pdate").style.display = "none";
+                                            }
+                                            break;
+                                        case "9":
+                                            if (age > 14 || age < 13) {
+                                                document.getElementById("pdate").style.display = "inline";
+                                            } else {
+                                                document.getElementById("pdate").style.display = "none";
+                                            }
+                                            break;
+                                        case "10":
+                                            if (age > 15 || age < 14) {
+                                                document.getElementById("pdate").style.display = "inline";
+                                            } else {
+                                                document.getElementById("pdate").style.display = "none";
+                                            }
+                                            break;
+                                        case "12":
+                                            if (age > 17 || age < 16) {
+                                                document.getElementById("pdate").style.display = "inline";
+                                            } else {
+                                                document.getElementById("pdate").style.display = "none";
+                                            }
+                                            break;
 
+                                    }
+
+                                    if (mobile.toString().length != 10) {
+                                        document.getElementById("mob").style.display = "inline";
+                                    } else {
+                                        document.getElementById("mob").style.display = "none";
+                                    }
+                                    if (home.toString().length != 10) {
+                                        document.getElementById("hom").style.display = "inline";
+                                    } else {
+                                        document.getElementById("hom").style.display = "none";
+                                    }
                                 }
-                                alert("hi");
-
-                                if (mobile.toString().length != 10) {
-                                    document.getElementById("mob").style.display = "inline";
-                                }
-                                if (home.toString().length != 10) {
-                                    document.getElementById("hom").style.display = "inline";
-                                }
-
                             }
                     .clear
         footer

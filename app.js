@@ -31,6 +31,7 @@ var student_attendence_sheet=require('./routes/StudentAttendenceSheet');
 
 var student_registration = require('./routes/student_registration');
 var student_absentnote = require('./routes/student_absentnote');
+var registration_successful = require('./routes/registration_successful');
 
 var teachers_dashboard = require('./routes/teachers_dashboard');
 
@@ -91,6 +92,7 @@ app.use('/Teachers_Apply_Leave_Form',teachers_apply_leave);
 app.use('/StudentAttendenceSheet',student_attendence_sheet);
 app.use('/student_registration',student_registration);
 app.use('/student_absentnote',student_absentnote);
+app.use('/registration_successful',registration_successful);
 app.use('/teachers_dashboard',teachers_dashboard);
 app.use('/principals_dashboard' ,principals_dashboard);
 
