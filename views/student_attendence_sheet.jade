@@ -11,8 +11,8 @@ html(lang='en')
                 else {
                     document.getElementById("errordate").style.display = "none";
                 }
-                var t=say_hi();
-                if(t){alert("hi");}
+               // var t=say_hi();
+               // if(t){}
             }
             function say_hi() {
                 var hi = confirm("No student is present. Are you sure?");
@@ -70,10 +70,17 @@ html(lang='en')
                 border-collapse: collapse;
                 width: 100%;
             }
-            td, th {
+            td {
                 border: 1px solid #dddddd;
                 text-align: center;
                 padding: 8px;
+
+            }
+            th{
+                border: 1px solid #dddddd;
+                text-align: center;
+                padding: 8px;
+
             }
             tr:nth-child(even) {
                 background-color: #dddddd;
@@ -100,9 +107,21 @@ html(lang='en')
                     h2(style='align:center') Student Table
                     table(name='Table')
                         tr
-                            th Index No
+                            th Student <br> No
                             th Student
                             th Presence
+
+                         tbody
+
+                             -each item in jsonArray
+                                 tr
+                                    td=item.ID
+                                    td=item.NameWithInit
+                                    td
+                                        input(type='checkbox' name='check'+item.ID+'box')
+
+
+
 
                     button#submitbtn.button-primary(type='submit', onclick='validate(this)') Confirm
                 #success_message(style='display:none')
