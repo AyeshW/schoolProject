@@ -20,10 +20,16 @@ var buddhism = require('./routes/buddhism');
 var history = require('./routes/history');
 var buddhism=require('./routes/buddhism');
 var teachers_apply_leave=require('./routes/Teachers_Apply_Leave_Form');
+
+var teachers_registration=require('./routes/Teachers_registration');
+
 var student_attendence_sheet=require('./routes/StudentAttendenceSheet');
 
 var student_registration = require('./routes/student_registration');
 var student_absentnote = require('./routes/student_absentnote');
+
+var student_attendence_sheet=require('./routes/student_attendence_sheet');
+var teachers_attendence=require('./routes/teachers_attendence');
 
 var app = express();
 
@@ -57,8 +63,10 @@ app.use('/Teachers_Apply_Leave_Form',teachers_apply_leave);
 app.use('/StudentAttendenceSheet',student_attendence_sheet);
 app.use('/student_registration',student_registration);
 app.use('/student_absentnote',student_absentnote);
+app.use('/Teachers_registration',teachers_registration);
 
-
+app.use('/student_attendence_sheet',student_attendence_sheet);
+app.use('/teachers_attendence',teachers_attendence);
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
 //   var err = new Error('Not Found');

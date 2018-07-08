@@ -66,7 +66,7 @@ html(lang='en')
             .form-container
                 h1
                     | Daily Attendence Sheet
-                form#reused_form(method='post')
+                form#reused_form('/StudentAttendenceSheet/a',method='post')
                     label#TodayIsText(for='today', style='float:left') Date :
                     // <input id="date" type="date" name="Date" placeholder='MM/DD/YYYY'  >
                     input#today(type='date', name='Date', placeholder='Pick a date')
