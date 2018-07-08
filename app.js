@@ -24,6 +24,9 @@ var buddhism = require('./routes/buddhism');
 var history = require('./routes/history');
 var buddhism=require('./routes/buddhism');
 var teachers_apply_leave=require('./routes/Teachers_Apply_Leave_Form');
+
+var teachers_registration=require('./routes/Teachers_registration');
+
 var student_attendence_sheet=require('./routes/StudentAttendenceSheet');
 
 var student_registration = require('./routes/student_registration');
@@ -32,6 +35,9 @@ var student_absentnote = require('./routes/student_absentnote');
 var teachers_dashboard = require('./routes/teachers_dashboard');
 
 var principals_dashboard = require('./routes/principals_dashboard')
+
+var student_attendence_sheet=require('./routes/student_attendence_sheet');
+var teachers_attendence=require('./routes/teachers_attendence');
 
 var app = express();
 
@@ -98,7 +104,9 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
     res.redirect('/');
 }
-
+app.use('/Teachers_registration',teachers_registration);
+app.use('/teachers_attendence',teachers_attendence);
+// catch 404 and forward to error handler
 
 //catch 404 and forward to error handler
 
