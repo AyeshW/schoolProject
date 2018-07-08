@@ -74,39 +74,22 @@ html(lang='en')
                     h3(style='align:center') Teacher Table
                     table
                         tr
-                            th(style='text-align: center;') Id No
+                            th Id No
                             th Teacher
-                            th(style='text-align: center;') Presence
-                        tr
-                            td(style='text-align: center;') 20123
-                            td(name="tr")  Alfreds Futterkiste
-                            td(style='text-align: center;')
-                                input#p1(type='checkbox')
-                        tr
-                            td(style='text-align: center;') 20146
-                            td Centro comercia
-                            td
-                                input#p2(type='checkbox')
-                        tr
-                            td(style='text-align: center;') 20155
-                            td Ernst Handel
-                            td(style='text-align: center;')
-                                input#p3(type='checkbox')
-                        tr
-                            td(style='text-align: center;') 20324
-                            td Island Tradi
-                            td(style='text-align: center;')
-                                input#p4(type='checkbox')
-                        tr
-                            td(style='text-align: center;') 20433
-                            td Laughing Bacchus Winecellars
-                            td(style='text-align: center;')
-                                input#p5(type='checkbox')
-                        tr
-                            td(style='text-align: center;') 20932
-                            td Magazzini Alimentari Riuniti
-                            td(style='text-align: center;')
-                                input#p6(type='checkbox')
+                            th Presence
+
+                         tbody
+                             -each item in jsonArray
+                                tr
+                                  td=item.id
+                                  td=item.name
+                                  td
+                                     input(type='checkbox' name='d')
+
+
+
+
+
                     button#submitbtn.button-primary(type='submit', onclick='renderNames()') Confirm
                 #success_message(style='display:none')
                     h3 Submitted the form successfully!
