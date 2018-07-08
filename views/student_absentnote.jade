@@ -23,7 +23,7 @@ html
         h1 Absent Note
         .w3l-main
             .w3l-from
-                form(action='/', method='post')
+                form(action='/student_absentnote', method='post')
                     .w3l-user1
                         label.head
                             | Student's Full Name
@@ -34,7 +34,8 @@ html
                         label.head
                             | Index Number
                             span.w3l-star  *
-                            input(type='number', id='index', name="index", placeholder='5 digit index number', required='')
+                            input(type='number', id='Index', name="Index", placeholder='5 digit index number', required='')
+                        p(id='pindex',name ='pindex', style='display:inline; color:red;') #{message1}
                      .clear
                     .w3l-mail
                         label.head
@@ -45,53 +46,43 @@ html
                         label.head
                             | Parent's Phone Number
                             span.w3l-star  *
-                        input(type='number', id='mobile', name='phone number', placeholder='07XXXXXXXX', required='')
-                        p(id='mob',style='display:none; color:red;') Invalid Phone Number. Enter 10 Digit Number
+                        input(type='number', id='mobile', name='phone_number', placeholder='07XXXXXXXX', required='')
+                        p(id='mob',style='display:inline; color:red;') #{message2}
                     .clear
                     .w3l-date
                         label.head
-                            | Absent Dates
-                            button(onclick='addMore()') Add
-                            button(onclick='Undo()') Undo
+                            | Absent Dates(From)
                             span.w3l-star  *
 
                         .styled-input
-                            input#date1(type='date', name='from', placeholder='MM/DD/YYYY')
+                            input#date1(type='date', name='From', placeholder='MM/DD/YYYY')
 
-                            .w3l-sym1
-                                    div
-                                        ul#dates
-                            script.
-                               // var today = new Date();
-                                function addMore() {
-                                    var absent_date = document.getElementById("date1").value;
 
-                                    //if(absent_date>today )
-                                    var node = document.createElement("LI");
-                                    var textnode = document.createTextNode(absent_date);
-                                    node.appendChild(textnode);
-                                    document.getElementById("dates").appendChild(node);
-                                }
-                               function Undo() {
-                                   var child = document.getElementById("dates").lastChild;
-                                   document.getElementById("dates").removeChild(child);
-                               }
-
-                            p(id='date', style='display:none; color:red;') Invalid Date
+                    .w3l-dateRight
+                        label.head
+                            | Absent Dates(To)
+                            span.w3l-star  *
+                        //p (Enter the same date if you absent only one day)
+                        .styled-input
+                            input#date3(type='date', name='To', placeholder='MM/DD/YYYY')
+                    p(style='font-size: 16px; color: white; font-weight: 1000; ') Enter the same date if you absent only one day
+                    p(id='nodate', style='display:inline; color:red;') #{message4}
+                    p(id='date', style='display:inline; color:red;') #{message3}
                      .clear
+
                     .w3l-rem
                         .w3l-right
                             label.head
                                 | Reason for Absence
                                 span.w3l-star  *
-                            textarea
-                    .w3l-date
+                            textarea(required='')
+                    //.w3l-date
                         label.head
                             | Date
                             span.w3l-star  *
 
                         .styled-input
-                            input#date2(type='date', name='from', placeholder='MM/DD/YYYY')
+                            input#date2(type='date', name='today', placeholder='MM/DD/YYYY')
                     .w3l-sym
                         label.head
                             .btn1
