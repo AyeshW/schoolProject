@@ -39,6 +39,7 @@ var principals_dashboard = require('./routes/principals_dashboard')
 
 var student_attendence_sheet=require('./routes/student_attendence_sheet');
 var teachers_attendence=require('./routes/teachers_attendence');
+var successfully_submitted = require('./routes/successfully_submitted');
 
 var app = express();
 
@@ -95,6 +96,7 @@ app.use('/student_absentnote',student_absentnote);
 app.use('/registration_successful',registration_successful);
 app.use('/teachers_dashboard',teachers_dashboard);
 app.use('/principals_dashboard' ,principals_dashboard);
+app.use('/successfully_submitted',successfully_submitted);
 
 // route middleware to make sure
 function isLoggedIn(req, res, next) {

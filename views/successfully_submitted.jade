@@ -1,21 +1,9 @@
 doctype html
-//
-  Created by Ayesh Malindu on 23/04/2018.
-
 html
     head
-        style(type='text/css').
-            #subject-name {
-                font-size: xx-large;
-                color: rgba(0, 0, 200, 1);
-                text-align: center;
-                font-weight: bolder;
-                background-color: rgba(0, 0, 200, 0.15);
-            }
-
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
-        title Science
+        title Dashboard
         // Tell the browser to be responsive to screen width
         meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
         // Bootstrap 3.3.7
@@ -29,7 +17,7 @@ html
         //
           AdminLTE Skins. Choose a skin from the css/skins
           folder instead of downloading all of them to reduce the load.
-        link(rel='stylesheet', href='/stylesheets/dashboard/dist/css/skins/_all-skins.min.css')
+        link(rel='stylesheet', href='stylesheets/dist/css/skins/_all-skins.min.css')
         // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
         // WARNING: Respond.js doesn't work if you view the page via file://
         //
@@ -114,7 +102,7 @@ html
                                                     .pull-left
                                                         img.img-circle(src='/stylesheets/dashboard/dist/img/user3-128x128.jpg', alt='User Image')
                                                     h4
-                                                        | eSolutions
+                                                        | AdminLTE Design Team
                                                         small
                                                             i.fa.fa-clock-o
                                                             |  2 hours
@@ -169,7 +157,7 @@ html
                                                 a(href='#')
                                                     i.fa.fa-warning.text-yellow
                                                     |  Very long description here that may not fit into the
-                                                    |                                                                           page and may cause design problems
+                                                    |                                                 page and may cause design problems
                                             li
                                                 a(href='#')
                                                     i.fa.fa-users.text-red
@@ -240,13 +228,13 @@ html
                             li.dropdown.user.user-menu
                                 a.dropdown-toggle(href='#', data-toggle='dropdown')
                                     img.user-image(src='/stylesheets/dashboard/dist/img/user2-160x160.jpg', alt='User Image')
-                                    span.hidden-xs Hasitha Isuru
+                                    span.hidden-xs #{name}
                                 ul.dropdown-menu
                                     // User image
                                     li.user-header
                                         img.img-circle(src='/stylesheets/dashboard/dist/img/user2-160x160.jpg', alt='User Image')
                                         p
-                                            | Admin - Web Developer
+                                            | Hasitha Isuru - Web Developer
                                             small Member since Nov. 2012
                                     // Menu Body
                                     li.user-body
@@ -263,7 +251,7 @@ html
                                         .pull-left
                                             a.btn.btn-default.btn-flat(href='#') Profile
                                         .pull-right
-                                            a.btn.btn-default.btn-flat(href='#') Sign out
+                                            a.btn.btn-default.btn-flat(href='/dashboard/logout') Sign out
                             // Control Sidebar Toggle Button
                             li
                                 a(href='#', data-toggle='control-sidebar')
@@ -277,7 +265,7 @@ html
                         .pull-left.image
                             img.img-circle(src='/stylesheets/dashboard/dist/img/user2-160x160.jpg', alt='User Image')
                         .pull-left.info
-                            p Hasitha Isuru
+                            p #{name}
                             a(href='#')
                                 i.fa.fa-circle.text-success
                                 |  Online
@@ -295,18 +283,26 @@ html
                         li.treeview
                             a(href='#')
                                 i.fa.fa-dashboard
-                                span Users
+                                span Subjects
                                 span.pull-right-container
                                     i.fa.fa-angle-left.pull-right
-                            ul.treeview-menu(style='display: none;')
+                            ul.treeview-menu(style='display: block;')
+                                li
+                                    a(href='/science')
+                                        i.fa.fa-circle-o
+                                        |  Science
+                                li
+                                    a(href='/history')
+                                        i.fa.fa-circle-o
+                                        |  History
                                 li
                                     a(href='/index.html')
                                         i.fa.fa-circle-o
-                                        |  Create user
+                                        |  Mathematics
                                 li
-                                    a(href='/index2.html')
+                                    a(href='/buddhism')
                                         i.fa.fa-circle-o
-                                        |  View all
+                                        |  Buddhism
                         li.treeview
                             a(href='#')
                                 i.fa.fa-files-o
@@ -348,123 +344,25 @@ html
                 // /.sidebar
             // Content Wrapper. Contains page content
             .content-wrapper(style='min-height: 902.6px;')
-                #subject-name Science
-                .content
-
-                    p
-                        span(style='color: #3366ff;')
-                            strong
-                                span(style='font-size: x-large;') Living Tissues
-                    ul.section.img-text
-                        li#module-1010.activity.resource.modtype_resource
-                            div
-                                .mod-indent-outer
-                                    .mod-indent
-                                    div
-                                        .activityinstance
-                                            a(onclick='', href='http://www2.highlands.edu/academics/divisions/scipe/biology/labs/rome/histology.pdf')
-                                                img.iconlarge.activityicon(src='https://wwwimages2.adobe.com/content/dam/acom/en/legal/images/badges/Adobe_PDF_file_icon_32x32.png', alt=' ', role='presentation')
-                                                span.instancename
-                                                    |  Lesson 01
-
-                .content
-                    p
-                        span(style='color: #3366ff;')
-                            strong
-                                span(style='font-size: x-large;') Photosynthesis
-                    ul.section.img-text
-                        li#module-1020.activity.resource.modtype_resource
-                            div
-                                .mod-indent-outer
-                                    .mod-indent
-                                    div
-                                        .activityinstance
-                                            a(onclick='', href='http://download.nos.org/srsec314newE/PDFBIO.EL11.pdf')
-                                                img.iconlarge.activityicon(src='https://wwwimages2.adobe.com/content/dam/acom/en/legal/images/badges/Adobe_PDF_file_icon_32x32.png', alt=' ', role='presentation')
-                                                span.instancename
-                                                    |  Lesson 02
-
-                .content
-                    p
-                        span(style='color: #3366ff;')
-                            strong
-                                span(style='font-size: x-large;') Mixtures
-                    ul.section.img-text
-                        li#module-1030.activity.resource.modtype_resource
-                            div
-                                .mod-indent-outer
-                                    .mod-indent
-                                    div
-                                        .activityinstance
-                                            a(onclick='', href='https://www.oup.com.au/__data/assets/pdf_file/0020/58322/SIL_OXSCI7VIC_06861_sample_chapter_mktg_reduced.pdf')
-                                                img.iconlarge.activityicon(src='https://wwwimages2.adobe.com/content/dam/acom/en/legal/images/badges/Adobe_PDF_file_icon_32x32.png', alt=' ', role='presentation')
-                                                span.instancename
-                                                    |  Lesson 03
-
-                .content
-
-                    p
-                        span(style='color: #3366ff;')
-                            strong
-                                span(style='font-size: x-large;') Waves and Their Applications
-                    ul.section.img-text
-                        li#module-1040.activity.resource.modtype_resource
-                            div
-                                .mod-indent-outer
-                                    .mod-indent
-                                    div
-                                        .activityinstance
-                                            a(onclick='', href='https://www.effinghamschools.com/cms/lib4/GA01000314/Centricity/Domain/702/559-566.pdf')
-                                                img.iconlarge.activityicon(src='https://wwwimages2.adobe.com/content/dam/acom/en/legal/images/badges/Adobe_PDF_file_icon_32x32.png', alt=' ', role='presentation')
-                                                span.instancename
-                                                    |  Lesson 04
-
-                .content
-
-                    p
-                        span(style='color: #3366ff;')
-                            strong
-                                span(style='font-size: x-large;') Geometrical Optics
-                    ul.section.img-text
-                        li#module-1050.activity.resource.modtype_resource
-                            div
-                                .mod-indent-outer
-                                    .mod-indent
-                                    div
-                                        .activityinstance
-                                            a(onclick='', href='http://www.vorc.fcu.edu.tw/wSite/public/Attachment/f1427708912322.pdf')
-                                                img.iconlarge.activityicon(src='https://wwwimages2.adobe.com/content/dam/acom/en/legal/images/badges/Adobe_PDF_file_icon_32x32.png', alt=' ', role='presentation')
-                                                span.instancename
-                                                    |  Lesson 05
-
-                .content
-
-                    p
-                        span(style='color: #3366ff;')
-                            strong
-                                span(style='font-size: x-large;') Human Body Processes
-                    ul.section.img-text
-                        li#module-1060.activity.resource.modtype_resource
-                            div
-                                .mod-indent-outer
-                                    .mod-indent
-                                    div
-                                        .activityinstance
-                                            a(onclick='', href='http://www.arvindguptatoys.com/arvindgupta/human-body-systems.pdf')
-                                                img.iconlarge.activityicon(src='https://wwwimages2.adobe.com/content/dam/acom/en/legal/images/badges/Adobe_PDF_file_icon_32x32.png', alt=' ', role='presentation')
-                                                span.instancename
-                                                    |  Lesson 06
-
+                // form start
+                .alert.alert-success.alert-dismissible
+                    button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+                    h4
+                        i.icon.fa.fa-check
+                        |  Alert!
+                    |                 Successfully Submitted!
+                    // /.box-body
+            // /.content-wrapper
             footer.main-footer
                 .pull-right.hidden-xs
                     b Version
-                    |  1.1.0
+                    |  2.4.0
                 strong
-                    | Copyright © 2018
-                    | eSolutions
+                    | Copyright © 2014-2016
+                    a(href='https://adminlte.io') Almsaeed Studio
                     | .
                 |  All rights
-                |                     reserved.
+                |             reserved.
             // Control Sidebar
             aside.control-sidebar.control-sidebar-dark
                 // Create the tabs
@@ -743,7 +641,3 @@ html
         script(src='/stylesheets/dashboard/dist/js/adminlte.min.js')
         // AdminLTE for demo purposes
         script(src='/stylesheets/dashboard/dist/js/demo.js')
-        // Default-JavaScript
-        script(type='text/javascript', src='js/jquery-2.1.4.min.js')
-        // Calendar
-        script(src='js/jquery-ui.js')
