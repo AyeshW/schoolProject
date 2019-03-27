@@ -24,6 +24,7 @@ var buddhism = require('./routes/buddhism');
 var history = require('./routes/history');
 var buddhism=require('./routes/buddhism');
 var teachers_apply_leave=require('./routes/Teachers_Apply_Leave_Form');
+var change_spassword = require('./routes/change_spassword');
 
 var teachers_registration=require('./routes/Teachers_registration');
 
@@ -97,6 +98,7 @@ app.use('/registration_successful',registration_successful);
 app.use('/teachers_dashboard',teachers_dashboard);
 app.use('/principals_dashboard' ,principals_dashboard);
 app.use('/successfully_submitted',successfully_submitted);
+app.use('/change_spassword',change_spassword);
 
 // route middleware to make sure
 function isLoggedIn(req, res, next) {
